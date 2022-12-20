@@ -12,7 +12,7 @@ public class BuildPlayer : MonoBehaviour
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
         string[] scenes = UnityEditor.EditorBuildSettingsScene.GetActiveSceneList(UnityEditor.EditorBuildSettings.scenes);
         buildPlayerOptions.scenes = scenes;
-        buildPlayerOptions.locationPathName = "BuildT/RunRunRun.exe";
+        buildPlayerOptions.locationPathName = "RunRunRunBuild/RunRunRun.exe";
         //buildPlayerOptions.locationPathName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         buildPlayerOptions.target = BuildTarget.StandaloneWindows64;
         buildPlayerOptions.options = BuildOptions.None;
