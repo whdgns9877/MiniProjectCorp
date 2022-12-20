@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     Transform targetPos = null;
     [SerializeField] int myPos = 0;
+
+    ObjectPool pool = new ObjectPool();
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,17 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             myPos = ++myPos > 1 ? 1 : myPos;
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            GameObject instObj = pool.Make();
+            instObj.transform.position = transform.position;
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            //pool.Retrieve();
         }
 
         switch (myPos)
