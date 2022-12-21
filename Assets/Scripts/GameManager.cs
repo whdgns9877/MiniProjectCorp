@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         ground = GameObject.Find("Backgroundtest").GetComponent<Background>();
-        Init(player, ground);
 
         ground.speed = 0f;
         StartCoroutine(CountDown());
@@ -56,6 +55,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         print("Game Start!!");
         ground.speed = 5f;
+        Init(player, ground);
     }
     
 

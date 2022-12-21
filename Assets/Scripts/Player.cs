@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
 
     WaitForFixedUpdate time = new WaitForFixedUpdate();
     float deltaTime = 0f;
+
+    [SerializeField] bool isInvincible = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -100,25 +103,28 @@ public class Player : MonoBehaviour
 
     void InvinProcess()
     {
+        if (isInvincible == true)
+            return;
         StartCoroutine(process());
     }
 
     IEnumerator process()
     {
+        isInvincible = true;
         int i = 0;
         for(i = 100; i > 0; i++)
         {
-            myRenderer.material.color = new Color(0, 0, 255 * i * 0.01f);
+            myRenderer.material.color = new Color(0, 0, 255, i);
             yield return null;
         }
         yield return null;
 
         for (i = 0; i < 100; i++)
         {
-            myRenderer.material.color = new Color(0, 0, 255 * i * 0.01f);
+            myRenderer.material.color = new Color(0, 0, 255, i);
             yield return null;
         }
-
+        isInvincible = false;
         yield break;
     }
 }
