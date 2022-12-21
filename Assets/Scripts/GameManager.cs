@@ -41,6 +41,21 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         ground = GameObject.Find("Backgroundtest").GetComponent<Background>();
         Init(player, ground);
+
+        ground.speed = 0f;
+        StartCoroutine(CountDown());
+    }
+
+    IEnumerator CountDown()
+    {
+        Debug.Log(3);
+        yield return new WaitForSeconds(1.0f);
+        Debug.Log(2);
+        yield return new WaitForSeconds(1.0f);
+        Debug.Log(1);
+        yield return new WaitForSeconds(1.0f);
+        print("Game Start!!");
+        ground.speed = 5f;
     }
 
     private void Init(Player player, Background ground)
