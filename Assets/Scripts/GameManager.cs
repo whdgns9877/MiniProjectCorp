@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
         print("Game Start!!");
         ground.speed = 5f;
     }
+    
 
     private void Init(Player player, Background ground)
     {
@@ -90,5 +91,12 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
+    }
+
+   public void OnClickPause()
+    {
+        /*isPause = true;
+
+        pause*/
     }
 }

@@ -18,8 +18,8 @@ public class Background : MonoBehaviour
         yScreenHalfSize = Camera.main.orthographicSize;
         zScreenHalfSize = yScreenHalfSize * Camera.main.aspect;
 
-        leftPosZ = -(zScreenHalfSize * 2);
-        rightPosZ = zScreenHalfSize * 2 * backgrounds.Length;
+        leftPosZ = -(zScreenHalfSize * 5);
+        rightPosZ = zScreenHalfSize * 5 * backgrounds.Length;
     }
 
     private void Update()
