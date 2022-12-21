@@ -9,9 +9,11 @@ public class Player : MonoBehaviour
     [SerializeField] Transform MiddlePos;
     [SerializeField] Transform RightPos;
 
+    [SerializeField] MeshRenderer myRenderer = null;
+
     Transform targetPos = null;
     [SerializeField] int myPos = 0;
-    [SerializeField] float speed = 0f;
+    public float speed = 0f;
 
     [SerializeField] bool isGround = true;
 
@@ -94,5 +96,29 @@ public class Player : MonoBehaviour
         {
             isGround = false;
         }
+    }
+
+    void InvinProcess()
+    {
+        StartCoroutine(process());
+    }
+
+    IEnumerator process()
+    {
+        int i = 0;
+        for(i = 100; i > 0; i++)
+        {
+            myRenderer.material.color = new Color(0, 0, 255 * i * 0.01f);
+            yield return null;
+        }
+        yield return null;
+
+        for (i = 0; i < 100; i++)
+        {
+            myRenderer.material.color = new Color(0, 0, 255 * i * 0.01f);
+            yield return null;
+        }
+
+        yield break;
     }
 }
