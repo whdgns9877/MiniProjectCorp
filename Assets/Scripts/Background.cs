@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
+    [SerializeField] 
+
     public Transform[] backgrounds;
     float speed = 5.0f;
     float leftPosZ = 0f;
