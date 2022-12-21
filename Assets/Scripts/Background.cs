@@ -5,7 +5,8 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
     public Transform[] backgrounds;
-    float speed = 5.0f;
+    public float speed = 5.0f;
+
     float leftPosZ = 0f;
     float rightPosZ = 0f;
     float zScreenHalfSize;
