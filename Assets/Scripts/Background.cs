@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-    [SerializeField] 
 
     public Transform[] backgrounds;
     public float speed = 5.0f;
@@ -34,6 +33,7 @@ public class Background : MonoBehaviour
                 Vector3 nextPos = backgrounds[i].position;
                 nextPos = new Vector3(nextPos.z + rightPosZ, nextPos.y);
                 backgrounds[i].position = nextPos;
+                GameManager.Instance.RollingCount++;
             }
         }
     }
