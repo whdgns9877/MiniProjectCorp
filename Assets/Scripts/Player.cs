@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGround)
         {
             isGround = false;
-            StartCoroutine(Jump(0.5f));
+            StartCoroutine(Jump(1.5f));
         }
 
         switch (myPos)
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
             {
                 yield break;
             }
-            transform.position += Vector3.up * time * jumpPower;
+            transform.position += Vector3.up * time * jumpPower * 0.33f;
             yield return time;
         }
     }
@@ -93,10 +93,12 @@ public class Player : MonoBehaviour
     {
         if(other.CompareTag("Ground"))
         {
+            Debug.Log("땅입니당");
             isGround = true;
         }
         else
         {
+            Debug.Log("공중입니당");
             isGround = false;
         }
     }

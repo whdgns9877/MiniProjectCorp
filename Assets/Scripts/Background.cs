@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
+    [SerializeField] Transform spawnPosLeft = null;
+    [SerializeField] Transform spawnPosMiddle = null;
+    [SerializeField] Transform spawnPosRight = null;
+
+    [SerializeField] GameObject[] objects = null;
 
     public Transform[] backgrounds;
     public float speed { get; set; } = 0f;
@@ -13,13 +18,18 @@ public class Background : MonoBehaviour
     float zScreenHalfSize;
     float yScreenHalfSize;
 
+    private void Awake()
+    {
+        
+    }
+
     private void Start()
     {
         yScreenHalfSize = Camera.main.orthographicSize;
         zScreenHalfSize = yScreenHalfSize * Camera.main.aspect;
 
-        leftPosZ = -(zScreenHalfSize * 2);
-        rightPosZ = zScreenHalfSize * 2 * backgrounds.Length;
+        leftPosZ = -(zScreenHalfSize * 5);
+        rightPosZ = zScreenHalfSize * 5 * backgrounds.Length;
     }
 
     private void Update()
@@ -35,6 +45,14 @@ public class Background : MonoBehaviour
                 backgrounds[i].position = nextPos;
                 GameManager.Instance.RollingCount++;
             }
+        }
+    }
+
+    private void SelectObject()
+    {
+        for(int i = 0; i < objects.Length; i++)
+        {
+
         }
     }
 }
