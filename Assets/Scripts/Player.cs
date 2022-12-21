@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] Transform leftPos;
-    [SerializeField] Transform MiddlePos;
-    [SerializeField] Transform RightPos;
-
+    [SerializeField] Transform leftPos = null;
+    [SerializeField] Transform MiddlePos = null;
+    [SerializeField] Transform RightPos = null;
+    [SerializeField] Animator anim = null;
     [SerializeField] MeshRenderer myRenderer = null;
 
     Transform targetPos = null;
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     float deltaTime = 0f;
 
     [SerializeField] bool isInvincible = false;
-
+    bool isJumping = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +52,9 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGround)
         {
+            isJumping = true;
             isGround = false;
+            anim.SetBool("isJump", true);
             StartCoroutine(Jump(1.5f));
         }
 
@@ -72,7 +74,11 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(gameObject.transform.position, targetPos.transform.position, 0.2f * speed);
+        if (isJumping == false)
+        {
+            transform.position = Vector3.Lerp(gameObject.transform.position, targetPos.transform.position, 0.2f * speed);
+
+        }    
     }
 
     IEnumerator Jump(float time)
@@ -82,9 +88,11 @@ public class Player : MonoBehaviour
             time -= deltaTime;
             if (time < 0)
             {
+                isJumping = false;
+                anim.SetBool("isJump", false);
                 yield break;
             }
-            transform.position += Vector3.up * time * jumpPower * 0.33f;
+            transform.position += Vector3.up * time * jumpPower * 0.1f;
             yield return time;
         }
     }
@@ -93,12 +101,10 @@ public class Player : MonoBehaviour
     {
         if(other.CompareTag("Ground"))
         {
-            Debug.Log("땅입니당");
             isGround = true;
         }
         else
         {
-            Debug.Log("공중입니당");
             isGround = false;
         }
     }
