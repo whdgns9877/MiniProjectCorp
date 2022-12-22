@@ -6,9 +6,8 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour, IProcess
 {
     //------------------------------------------------------//
-    [SerializeField] GameObject[] debrises = null;
-    [SerializeField] float exposiveForce = 0f;
-    [SerializeField] Vector3 offset = Vector3.zero;
+    [SerializeField] GameObject debrisPrefab = null;
+    
     IProcess process = null;
     void Start()
     {
@@ -46,18 +45,7 @@ public class Obstacle : MonoBehaviour, IProcess
 
     private void Crash()
     {
-        Rigidbody[] rigidbodies = new Rigidbody[debrises.Length];
-        for (int i = 0; i < debrises.Length; i++)
-        {
-            debrises[i].SetActive(true);
-            rigidbodies[i] = debrises[i].GetComponent<Rigidbody>();
-            debrises[i].transform.SetParent(null);
-        }
-
-        for(int i = 0; i < rigidbodies.Length; i++)
-        {
-            rigidbodies[i].AddExplosionForce(exposiveForce, transform.position + offset, 10f);
-        }
+        GameObject debris = Instantiate(debrisPrefab, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
     }
 }

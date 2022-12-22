@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
 
     public void SceneChange()
     {
+        GameManager.Instance.AudioManager.PlaySound(AudioType.Button, false);
         SceneManager.LoadScene("CMJScene");
     }
 
@@ -56,6 +57,7 @@ public class UIManager : MonoBehaviour
     public void No()
     {
         PauseMenuUI.SetActive(true);
+        GameManager.Instance.AudioManager.PlaySound(AudioType.Button, false);
         Time.timeScale = 0f;
         GamePause = true;
     }
@@ -67,9 +69,10 @@ public class UIManager : MonoBehaviour
         float curGround = GameManager.Instance.ground.speed;
         GameManager.Instance.ground.speed = 0f;
         PauseMenuUI.SetActive(false);
-        GamePause = true;
+        GamePause = false;
 
         _NUM_3.SetActive(true);
+        GameManager.Instance.AudioManager.PlaySound(AudioType.Button, false);
         yield return new WaitForSeconds(1.0f);
         _NUM_3.SetActive(false);
         _NUM_2.SetActive(true);

@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CountDown()
     {
+        GameManager.Instance.AudioManager.PlaySound(AudioType.CountDown, false);
         _NUM_3.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         _NUM_3.SetActive(false);
@@ -75,6 +76,8 @@ public class GameManager : MonoBehaviour
         _Tutorial.SetActive(false);
         ground.speed = 5f;
         Init(player, ground);
+        yield return new WaitForSeconds(0.5f);
+        GameManager.Instance.AudioManager.PlaySound(AudioType.GameScene, true);
     }
 
     private void Update()
