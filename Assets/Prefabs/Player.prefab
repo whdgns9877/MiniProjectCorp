@@ -1500,6 +1500,7 @@ GameObject:
   - component: {fileID: 1703331320}
   - component: {fileID: 1703331319}
   - component: {fileID: 1731078071}
+  - component: {fileID: 1731078072}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1540,6 +1541,7 @@ MonoBehaviour:
   leftPos: {fileID: 0}
   MiddlePos: {fileID: 0}
   RightPos: {fileID: 0}
+  anim: {fileID: 1703331319}
   myRenderer: {fileID: 0}
   myPos: 0
   speed: 1
@@ -1595,6 +1597,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1731078072
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663232150871191418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &5934229192136936416
 GameObject:
   m_ObjectHideFlags: 0

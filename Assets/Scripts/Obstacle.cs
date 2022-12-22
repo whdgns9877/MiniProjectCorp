@@ -14,13 +14,26 @@ public class Obstacle : MonoBehaviour, IProcess
     {
         if (other.CompareTag("Player"))
         {
-
             Do();
         }
     }
 
     private void Do()
     {
+        playerSpeedController(3f);
+    }
+
+    IEnumerator playerSpeedController(float time)
+    {
         process.player.speed *= 0.5f;
+        while (true)
+        {
+            time -= Time.deltaTime;
+            if(time < 0)
+            {
+                process.player.speed *= 2f;
+                yield return null;
+            }
+        }
     }
 }
