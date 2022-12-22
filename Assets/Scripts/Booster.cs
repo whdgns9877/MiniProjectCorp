@@ -29,4 +29,18 @@ public class Booster : MonoBehaviour, IProcess
             Do();
         }
     }
+
+    IEnumerator BackGroundScrollSpeedControl(float time)
+    {
+        process.player.speed *= 0.5f;
+        while (true)
+        {
+            time -= Time.deltaTime;
+            if (time < 0)
+            {
+                process.player.speed *= 2f;
+                yield return null;
+            }
+        }
+    }
 }

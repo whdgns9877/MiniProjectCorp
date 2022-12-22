@@ -43,14 +43,17 @@ public class Obstacle : MonoBehaviour, IProcess
 
         PlaneCoords = new List<Coordinates>();*/
 
-       
 
-   
+
+
 
 
 
 
     //------------------------------------------------------//
+    [SerializeField] GameObject[] debrises = null;
+    [SerializeField] float exposiveForce = 0f;
+    [SerializeField] Vector3 offset = Vector3.zero;
     IProcess process = null;
     void Start()
     {
@@ -66,7 +69,8 @@ public class Obstacle : MonoBehaviour, IProcess
 
     private void Do()
     {
-        playerSpeedController(3f);
+        StartCoroutine(playerSpeedController(3f));
+        Crash();
     }
 
     IEnumerator playerSpeedController(float time)
@@ -83,5 +87,20 @@ public class Obstacle : MonoBehaviour, IProcess
         }
     }
 
-    
+    private void Crash()
+    {
+        Rigidbody[] rigidbodies = new Rigidbody[debrises.Length];
+        for (int i = 0; i < debrises.Length; i++)
+        {
+            debrises[i].SetActive(true);
+            rigidbodies[i] = debrises[i].GetComponent<Rigidbody>();
+            debrises[i].transform.SetParent(null);
+        }
+
+        for(int i = 0; i < rigidbodies.Length; i++)
+        {
+            rigidbodies[i].AddExplosionForce(exposiveForce, transform.position + offset, 10f);
+        }
+        gameObject.SetActive(false);
+    }
 }
