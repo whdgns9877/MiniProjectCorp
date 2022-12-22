@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField] Transform MiddlePos = null;
     [SerializeField] Transform RightPos = null;
     [SerializeField] Animator anim = null;
-    [SerializeField] MeshRenderer myRenderer = null;
 
     Transform targetPos = null;
     [SerializeField] int myPos = 0;
@@ -21,14 +20,15 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpPower = 0f;
 
 
-    WaitForFixedUpdate time = new WaitForFixedUpdate();
+    WaitForFixedUpdate frameTime = new WaitForFixedUpdate();
     float deltaTime = 0f;
 
-    [SerializeField] bool isInvincible = false;
+    public bool isInvincible = false;
     bool isJumping = false;
     // Start is called before the first frame update
     void Start()
     {
+        isInvincible = false;
         targetPos = MiddlePos;
     }
 
@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
                 yield break;
             }
             transform.position += Vector3.up * time * jumpPower * 0.1f;
-            yield return time;
+            yield return frameTime;
         }
     }
 
@@ -113,26 +113,23 @@ public class Player : MonoBehaviour
     {
         if (isInvincible == true)
             return;
-        StartCoroutine(process());
+        StartCoroutine(process(3f));
     }
 
-    IEnumerator process()
+    IEnumerator process(float time)
     {
         isInvincible = true;
-        int i = 0;
-        for(i = 100; i > 0; i++)
+        anim.SetFloat("runSpeed", 1.5f);
+        while (true)
         {
-            myRenderer.material.color = new Color(0, 0, 255, i);
-            yield return null;
+            time -= deltaTime;
+            if(time < 0)
+            {
+                anim.SetFloat("runSpeed", 1f);
+                isInvincible = false;
+                yield break;
+            }
+            yield return frameTime;
         }
-        yield return null;
-
-        for (i = 0; i < 100; i++)
-        {
-            myRenderer.material.color = new Color(0, 0, 255, i);
-            yield return null;
-        }
-        isInvincible = false;
-        yield break;
     }
 }
