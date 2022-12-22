@@ -17,9 +17,8 @@ public class Booster : MonoBehaviour, IProcess
 
     void Invincivle()
     {
-        process.ground.speed *= 1.5f;
+        process.ground.speed = 30f;
         process.player.gameObject.SendMessage("InvinProcess", SendMessageOptions.DontRequireReceiver);
-        Debug.Log("무적 아이템 먹음!");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,6 +38,7 @@ public class Booster : MonoBehaviour, IProcess
             if (time < 0)
             {
                 process.player.speed = 2.5f;
+                process.ground.speed = 5f;
                 yield return null;
             }
         }
