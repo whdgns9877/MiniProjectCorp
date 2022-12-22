@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameManager GameMgr;
-    
-    public GameObject PauseCanvas;
+    public static bool GamePause = false;
+    public GameObject PauseMenuUI;
 
-    
     public void SceneChange()
     {
         SceneManager.LoadScene("CMJScene");
@@ -21,22 +19,32 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!GameManager.IsPause)
+            if (GamePause)
             {
-                OnClickPause();
+                Resume();
             }
+
             else
             {
-                PauseCanvas.SetActive(false);
+                Pause();
             }
         }
-
-
     }
-    public void OnClickPause()
+
+    void Resume()
     {
-        PauseCanvas.SetActive(true);
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GamePause = false;
     }
+
+    void Pause()
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GamePause = true;
+    }
+
 }
 
 
