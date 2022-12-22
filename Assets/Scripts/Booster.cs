@@ -32,13 +32,13 @@ public class Booster : MonoBehaviour, IProcess
 
     IEnumerator BackGroundScrollSpeedControl(float time)
     {
-        process.player.speed *= 0.5f;
+        process.player.speed = 0.5f;
         while (true)
         {
             time -= Time.deltaTime;
             if (time < 0)
             {
-                process.player.speed *= 2f;
+                process.player.speed = 2.5f;
                 yield return null;
             }
         }

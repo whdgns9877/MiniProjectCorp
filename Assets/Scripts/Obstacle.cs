@@ -69,19 +69,21 @@ public class Obstacle : MonoBehaviour, IProcess
 
     private void Do()
     {
-        StartCoroutine(playerSpeedController(3f));
-        Crash();
+        if(process.player.isInvincible == true)
+            Crash();
+        else 
+            StartCoroutine(playerSpeedController(3f));
     }
 
     IEnumerator playerSpeedController(float time)
     {
-        process.player.speed *= 0.5f;
+        process.player.speed = 0.5f;
         while (true)
         {
             time -= Time.deltaTime;
             if(time < 0)
             {
-                process.player.speed *= 2f;
+                process.player.speed = 2f;
                 yield return null;
             }
         }

@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField] Transform MiddlePos = null;
     [SerializeField] Transform RightPos = null;
     [SerializeField] Animator anim = null;
-    [SerializeField] MeshRenderer myRenderer = null;
 
     Transform targetPos = null;
     [SerializeField] int myPos = 0;
@@ -24,7 +23,7 @@ public class Player : MonoBehaviour
     WaitForFixedUpdate frameTime = new WaitForFixedUpdate();
     float deltaTime = 0f;
 
-    [SerializeField] bool isInvincible = false;
+    public bool isInvincible = false;
     bool isJumping = false;
     // Start is called before the first frame update
     void Start()
