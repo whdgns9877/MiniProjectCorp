@@ -10,6 +10,8 @@ public class Background : MonoBehaviour
 
     [SerializeField] GameObject[] objects = null;
 
+    [SerializeField] ObstacleSpwaner spawner = null;
+
     public Transform[] backgrounds;
     public float speed { get; set; } = 0f;
 
@@ -40,6 +42,7 @@ public class Background : MonoBehaviour
 
             if (backgrounds[i].position.z < leftPosZ)
             {
+                spawner.Spawn();
                 Vector3 nextPos = backgrounds[i].position;
                 nextPos = new Vector3(nextPos.z + rightPosZ, nextPos.y);
                 backgrounds[i].position = nextPos;

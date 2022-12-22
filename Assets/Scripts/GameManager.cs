@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour
 
     public int RollingCount { get; set; } = 0;
 
+    public GameObject _NUM_1;
+    public GameObject _NUM_2;
+    public GameObject _NUM_3;
+    public GameObject _START;
+    public GameObject _Tutorial;
+
     private int score = 0;
     private int bestScore = 0;
     private float time = 0;
@@ -41,20 +47,30 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         ground = GameObject.Find("Backgroundtest").GetComponent<Background>();
-
+        _Tutorial.SetActive(true);
+        _NUM_1.SetActive(false);
+        _NUM_2.SetActive(false);
+        _NUM_3.SetActive(false);
+        _START.SetActive(false);
         ground.speed = 0f;
         StartCoroutine(CountDown());
     }
 
     IEnumerator CountDown()
     {
-        Debug.Log(3);
+        _NUM_3.SetActive(true);
         yield return new WaitForSeconds(1.0f);
-        Debug.Log(2);
+        _NUM_3.SetActive(false);
+        _NUM_2.SetActive(true);
         yield return new WaitForSeconds(1.0f);
-        Debug.Log(1);
+        _NUM_2.SetActive(false);
+        _NUM_1.SetActive(true);
         yield return new WaitForSeconds(1.0f);
-        print("Game Start!!");
+        _NUM_1.SetActive(false);
+        _START.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        _START.SetActive(false);
+        _Tutorial.SetActive(false);
         ground.speed = 5f;
         Init(player, ground);
     }

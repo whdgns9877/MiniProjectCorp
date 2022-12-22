@@ -5,51 +5,6 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour, IProcess
 {
-    /*public Transform Plane;
-    public Vector3 Pos;
-
-    public struct Coordinates
-    {
-        public int x;
-        public int y;
-
-        public Coordinates(int _x, int _y)
-        {
-            x = _x;
-            y = _y;
-        }
-    }
-
-    public static T[] ShuffleArray<T>(T[] array, int seed)
-    {
-        // 유사 난수 생성기
-        System.Random prng = new System.Random(seed);
-
-        for (int i = 0; i < array.Length - 1; i++)
-        {
-            int randomIndex = prng.Next(i, array.Length);
-            T tempItem = array[randomIndex];
-            array[randomIndex] = array[i];
-            array[i] = tempItem;
-        }
-
-        return array;
-
-
-
-
-        List<Coordinates>
-
-
-        PlaneCoords = new List<Coordinates>();*/
-
-
-
-
-
-
-
-
     //------------------------------------------------------//
     [SerializeField] GameObject[] debrises = null;
     [SerializeField] float exposiveForce = 0f;

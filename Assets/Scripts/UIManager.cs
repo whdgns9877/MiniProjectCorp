@@ -8,13 +8,27 @@ public class UIManager : MonoBehaviour
 {
     public static bool GamePause = false;
     public GameObject PauseMenuUI;
-    
+    public GameObject _NUM_1;
+    public GameObject _NUM_2;
+    public GameObject _NUM_3;
+    public GameObject _START;
+
     public void SceneChange()
     {
         SceneManager.LoadScene("CMJScene");
     }
 
-    
+    public void SceneReset()
+    {
+        SceneManager.LoadScene("GameStartScene");
+    }
+    private void Start()
+    {
+        _NUM_1.SetActive(false);
+        _NUM_2.SetActive(false);
+        _NUM_3.SetActive(false);
+        _START.SetActive(false);
+    }
 
     private void Update()
     {
@@ -34,9 +48,9 @@ public class UIManager : MonoBehaviour
 
     public void Yes()
     {
-        PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        GamePause = false;
+        StartCoroutine(PauseCountDown());
+        
     }
 
     public void No()
@@ -46,6 +60,30 @@ public class UIManager : MonoBehaviour
         GamePause = true;
     }
 
+    
+
+    IEnumerator PauseCountDown()
+    {
+        float curGround = GameManager.Instance.ground.speed;
+        GameManager.Instance.ground.speed = 0f;
+        PauseMenuUI.SetActive(false);
+        GamePause = true;
+
+        _NUM_3.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        _NUM_3.SetActive(false);
+        _NUM_2.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        _NUM_2.SetActive(false);
+        _NUM_1.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        _NUM_1.SetActive(false);
+        _START.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        _START.SetActive(false);
+
+        GameManager.Instance.ground.speed = curGround;
+    }
 }
 
 
