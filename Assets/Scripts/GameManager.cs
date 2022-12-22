@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool IsPause = false;
     private static GameManager instance = null;
 
     public static GameManager Instance { get { return instance; } }
@@ -58,6 +59,14 @@ public class GameManager : MonoBehaviour
         Init(player, ground);
     }
 
+    private void Update()
+    {
+        if (IsPause == true)
+        {
+            
+        }
+    }
+
     private void Init(Player player, Background ground)
     {
         StartCoroutine(SpeedControl(3f));
@@ -91,4 +100,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
+   
 }
