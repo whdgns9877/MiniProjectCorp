@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get { return instance; } }
 
+    [SerializeField] private AudioManager audioManager = null;
+    public AudioManager AudioManager { get { return audioManager; } }
     public Player player = null;
     public Background ground= null;
 
@@ -41,7 +43,6 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         ground = GameObject.Find("Backgroundtest").GetComponent<Background>();
-
         ground.speed = 0f;
         StartCoroutine(CountDown());
     }

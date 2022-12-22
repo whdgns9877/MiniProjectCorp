@@ -1542,7 +1542,7 @@ MonoBehaviour:
   MiddlePos: {fileID: 0}
   RightPos: {fileID: 0}
   anim: {fileID: 1703331319}
-  myRenderer: {fileID: 0}
+  InvincibleEff: {fileID: 0}
   myPos: 0
   speed: 1
   isGround: 1

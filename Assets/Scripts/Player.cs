@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform MiddlePos = null;
     [SerializeField] Transform RightPos = null;
     [SerializeField] Animator anim = null;
+    [SerializeField] GameObject InvincibleEff = null;
 
     Transform targetPos = null;
     [SerializeField] int myPos = 0;
@@ -120,12 +121,14 @@ public class Player : MonoBehaviour
     {
         isInvincible = true;
         anim.SetFloat("runSpeed", 1.5f);
+        InvincibleEff.SetActive(true);
         while (true)
         {
             time -= deltaTime;
             if(time < 0)
             {
                 anim.SetFloat("runSpeed", 1f);
+                InvincibleEff.SetActive(false);
                 isInvincible = false;
                 yield break;
             }
