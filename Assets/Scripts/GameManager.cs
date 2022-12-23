@@ -2,6 +2,7 @@ using Newtonsoft.Json.Bson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
     public GameObject _NUM_3;
     public GameObject _START;
     public GameObject _Tutorial;
+    public Text count;
+    public float second, curTime, minute;
 
     private int score = 0;
     private int bestScore = 0;
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CountDown()
     {
+        yield return new WaitForSeconds(2.0f);
         _NUM_3.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         _NUM_3.SetActive(false);
@@ -75,6 +79,16 @@ public class GameManager : MonoBehaviour
         _Tutorial.SetActive(false);
         ground.speed = 5f;
         Init(player, ground);
+        curTime = Time.time;
+
+        second = (int)(Time.time - curTime);
+        if (second > 59)
+        {
+            curTime = Time.time;
+            second = 0;
+
+            minute++;
+        }
     }
 
     private void Update()
@@ -83,6 +97,9 @@ public class GameManager : MonoBehaviour
         {
             
         }
+
+        
+        
     }
 
     private void Init(Player player, Background ground)
