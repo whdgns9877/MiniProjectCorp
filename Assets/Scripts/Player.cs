@@ -53,8 +53,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGround)
         {
-            GameManager.Instance.AudioManager.PlaySound(AudioType.Jump, false);
-            GameManager.Instance.AudioManager.RunSound.Stop();
+         //   GameManager.Instance.AudioManager.PlaySound(AudioType.Jump, false);
+         //  GameManager.Instance.AudioManager.RunSound.Stop();
             isJumping = true;
             isGround = false;
             anim.SetBool("isJump", true);
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
             time -= deltaTime;
             if (time < 0)
             {
-                GameManager.Instance.AudioManager.PlaySound(AudioType.Run, true);
+             //   GameManager.Instance.AudioManager.PlaySound(AudioType.Run, true);
                 isJumping = false;
                 anim.SetBool("isJump", false);
                 

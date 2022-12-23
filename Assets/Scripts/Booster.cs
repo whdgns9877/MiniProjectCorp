@@ -13,7 +13,7 @@ public class Booster : MonoBehaviour, IProcess
     void Do()
     {
         Invincivle();
-        GameManager.Instance.AudioManager.PlaySound(AudioType.Booster, false);
+      //  GameManager.Instance.AudioManager.PlaySound(AudioType.Booster, false);
     }
 
     void Invincivle()
