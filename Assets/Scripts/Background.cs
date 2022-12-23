@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-    [SerializeField] Transform spawnPosLeft = null;
-    [SerializeField] Transform spawnPosMiddle = null;
-    [SerializeField] Transform spawnPosRight = null;
+    [SerializeField] Transform spawnPos_1 = null;
+    [SerializeField] Transform spawnPos_2 = null;
+    [SerializeField] Transform spawnPos_3 = null;
+    [SerializeField] Transform spawnPos_4 = null;
+    [SerializeField] Transform spawnPos_5 = null;
+    [SerializeField] Transform spawnPos_6 = null;
+    [SerializeField] Transform spawnPos_7 = null;
+    [SerializeField] Transform spawnPos_8 = null;
+    [SerializeField] Transform spawnPos_9 = null;
 
     [SerializeField] GameObject[] objects = null;
 

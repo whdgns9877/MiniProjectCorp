@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ObstacleSpwaner : MonoBehaviour
 {
-    public GameObject[] Obstacles;
+     public GameObject[] Obstacles;
+    //public GameObject[] Tile1;
+    //public GameObject[] Tile2;
+
 
     int randNum = 0;
     public void Spawn()
@@ -13,14 +16,15 @@ public class ObstacleSpwaner : MonoBehaviour
         {
             randNum = Random.Range(0, 3);
             if (randNum == 0)
-            {         
+            {
                 Obstacles[i].SetActive(true);
+
             }
             else
             {
                 Obstacles[i].SetActive(false);
             }
-            
+
         }
     }
 }
