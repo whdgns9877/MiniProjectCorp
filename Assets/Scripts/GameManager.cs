@@ -122,5 +122,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-   
+    public void GameFinish()
+    {
+        // 맵 스크롤 카운트가 일정 수치가 되어서 게임을끝내는함수
+        // UI 처리와 BestScore 등등 처리할거 여기서 해주면 됩니다.
+    }
 }

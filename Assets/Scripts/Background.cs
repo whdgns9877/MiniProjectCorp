@@ -47,6 +47,11 @@ public class Background : MonoBehaviour
                 nextPos = new Vector3(nextPos.z + rightPosZ, nextPos.y);
                 backgrounds[i].position = nextPos;
                 GameManager.Instance.RollingCount++;
+                if (GameManager.Instance.RollingCount == 3)
+                {
+                    // 게임매니저의 게임 끝내는 함수 호출
+                    GameManager.Instance.GameFinish();
+                }
             }
         }
     }
