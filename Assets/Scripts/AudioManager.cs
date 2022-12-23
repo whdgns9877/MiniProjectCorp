@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AudioType { Lobby, GameScene, Jump, Run, CountDown, NewScore, HighScore1, HighScore2, Graphic, Booster, Button }
+
 public class AudioManager : MonoBehaviour
 {
-    public enum AudioType { Lobby, GameScene, Jump, Run, CountDown, NewScore, HighScore1, HighScore2, Graphic }
-
     public AudioSource lobbySound = null;     
     public AudioSource GameSceneSound = null;
     public AudioSource JumpSound = null;
@@ -15,6 +15,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource HighScoreSound1 = null;
     public AudioSource HighScoreSound2 = null;
     public AudioSource GraphicSound = null;
+    public AudioSource BoosterSound = null;
+    public AudioSource ButtonSound = null;
 
     public void PlaySound(AudioType type, bool isLoop)
     {
@@ -55,6 +57,12 @@ public class AudioManager : MonoBehaviour
 
             case AudioType.Graphic:
                 playSound = GraphicSound;
+                break;
+            case AudioType.Booster:
+                playSound = BoosterSound;
+                break;
+            case AudioType.Button:
+                playSound = ButtonSound;
                 break;
         }
 

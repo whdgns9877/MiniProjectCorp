@@ -56,12 +56,4 @@ public class Background : MonoBehaviour
             }
         }
     }
-
-    private void SelectObject()
-    {
-        for(int i = 0; i < objects.Length; i++)
-        {
-
-        }
-    }
 }

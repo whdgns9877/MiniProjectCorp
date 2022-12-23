@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGround)
         {
+            GameManager.Instance.AudioManager.PlaySound(AudioType.Jump, false);
+            GameManager.Instance.AudioManager.RunSound.Stop();
             isJumping = true;
             isGround = false;
             anim.SetBool("isJump", true);
@@ -78,7 +80,6 @@ public class Player : MonoBehaviour
         if (isJumping == false)
         {
             transform.position = Vector3.Lerp(gameObject.transform.position, targetPos.transform.position, 0.2f * speed);
-
         }    
     }
 
@@ -89,8 +90,10 @@ public class Player : MonoBehaviour
             time -= deltaTime;
             if (time < 0)
             {
+                GameManager.Instance.AudioManager.PlaySound(AudioType.Run, true);
                 isJumping = false;
                 anim.SetBool("isJump", false);
+                
                 yield break;
             }
             transform.position += Vector3.up * time * jumpPower * 0.1f;

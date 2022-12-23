@@ -13,12 +13,14 @@ public class Booster : MonoBehaviour, IProcess
     void Do()
     {
         Invincivle();
+        GameManager.Instance.AudioManager.PlaySound(AudioType.Booster, false);
     }
 
     void Invincivle()
     {
         process.ground.speed = 30f;
         process.player.gameObject.SendMessage("InvinProcess", SendMessageOptions.DontRequireReceiver);
+        Invoke(nameof(ReSetBackGroundSpeed), 3f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,18 +31,8 @@ public class Booster : MonoBehaviour, IProcess
         }
     }
 
-    IEnumerator BackGroundScrollSpeedControl(float time)
+    void ReSetBackGroundSpeed()
     {
-        process.player.speed = 0.5f;
-        while (true)
-        {
-            time -= Time.deltaTime;
-            if (time < 0)
-            {
-                process.player.speed = 2.5f;
-                process.ground.speed = 5f;
-                yield return null;
-            }
-        }
+        process.ground.speed = 8f;
     }
 }

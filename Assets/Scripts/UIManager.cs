@@ -6,23 +6,17 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public bool GamePause = false;
+    public static bool GamePause = false;
     public GameObject PauseMenuUI;
     public GameObject _NUM_1;
     public GameObject _NUM_2;
     public GameObject _NUM_3;
     public GameObject _START;
-    
 
     public void SceneChange()
     {
+        GameManager.Instance.AudioManager.PlaySound(AudioType.Button, false);
         SceneManager.LoadScene("CMJScene");
-    }
-
-    public void GameExit()
-    {
-        Application.Quit();
-        Debug.Log("¡æ∑·«ﬂµ¢");
     }
 
     public void SceneReset()
@@ -41,7 +35,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GamePause == true)
+            if (GamePause)
             {
                 Yes();
             }
@@ -57,14 +51,18 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         StartCoroutine(PauseCountDown());
+        
     }
 
     public void No()
     {
         PauseMenuUI.SetActive(true);
+        GameManager.Instance.AudioManager.PlaySound(AudioType.Button, false);
         Time.timeScale = 0f;
         GamePause = true;
     }
+
+    
 
     IEnumerator PauseCountDown()
     {
@@ -72,8 +70,9 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.ground.speed = 0f;
         PauseMenuUI.SetActive(false);
         GamePause = false;
-        yield return new WaitForSeconds(1.0f);
+
         _NUM_3.SetActive(true);
+        GameManager.Instance.AudioManager.PlaySound(AudioType.Button, false);
         yield return new WaitForSeconds(1.0f);
         _NUM_3.SetActive(false);
         _NUM_2.SetActive(true);
@@ -85,7 +84,7 @@ public class UIManager : MonoBehaviour
         _START.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         _START.SetActive(false);
-        GamePause = true;
+
         GameManager.Instance.ground.speed = curGround;
     }
 }
