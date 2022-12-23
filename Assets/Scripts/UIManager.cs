@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,10 +13,14 @@ public class UIManager : MonoBehaviour
     public GameObject _NUM_2;
     public GameObject _NUM_3;
     public GameObject _START;
+    public TextMeshProUGUI timeText = null;
+
+    private float minute = 0;
+    private float second = 0;
 
     public void SceneChange()
     {
-        GameManager.Instance.AudioManager.PlaySound(AudioType.Button, false);
+        //GameManager.Instance.AudioManager.PlaySound(AudioType.Button, false);
         SceneManager.LoadScene("CMJScene");
     }
 
@@ -33,6 +38,17 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale != 0 && GameManager.Instance.IsGameStop == false)
+        {
+            second += Time.deltaTime;
+            if (second >= 60)
+            {
+                minute++;
+                second = 0;
+            } 
+        }
+        timeText.text = string.Format("{0:D2}", (int)minute) + " : " + string.Format("{0:D2}", (int)second);
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GamePause)
@@ -56,6 +72,7 @@ public class UIManager : MonoBehaviour
 
     public void No()
     {
+        GameManager.Instance.IsGameStop = true;
         PauseMenuUI.SetActive(true);
         GameManager.Instance.AudioManager.PlaySound(AudioType.Button, false);
         Time.timeScale = 0f;
@@ -84,7 +101,7 @@ public class UIManager : MonoBehaviour
         _START.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         _START.SetActive(false);
-
+        GameManager.Instance.IsGameStop = false;
         GameManager.Instance.ground.speed = curGround;
     }
 }

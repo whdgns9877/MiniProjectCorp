@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool IsGameStop = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        IsGameStop = true;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         ground = GameObject.Find("Backgroundtest").GetComponent<Background>();
         _Tutorial.SetActive(true);
@@ -71,6 +74,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         _NUM_1.SetActive(false);
         _START.SetActive(true);
+        IsGameStop = false;
         yield return new WaitForSeconds(1.0f);
         _START.SetActive(false);
         _Tutorial.SetActive(false);

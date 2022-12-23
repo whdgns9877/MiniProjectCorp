@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isJumping == true)
+            return;
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             myPos = --myPos < -1 ? -1 : myPos;
