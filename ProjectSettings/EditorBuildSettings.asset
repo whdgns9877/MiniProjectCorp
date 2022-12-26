@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameStartScene.unity
     guid: 573b6733fa38ee64f876b48b9a72aac1
   - enabled: 1
-    path: Assets/Scenes/CMJScene.unity
-    guid: e12331f485a13e7478cdb1bc5f86fe1c
-  - enabled: 1
     path: Assets/Scenes/KJHScene.unity
-    guid: 649534dedde511541a36a7951f0a8a73
+    guid: 2b273b1c604088444ad8f9bdb7625de3
   m_configObjects: {}

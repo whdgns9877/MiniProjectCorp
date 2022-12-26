@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject GameFinishText = null;
     public static bool IsPause = false;
     private static GameManager instance = null;
 
@@ -132,5 +133,13 @@ public class GameManager : MonoBehaviour
     {
         // 맵 스크롤 카운트가 일정 수치가 되어서 게임을끝내는함수
         // UI 처리와 BestScore 등등 처리할거 여기서 해주면 됩니다.
+        GameFinishText.SetActive(true);
+        Time.timeScale = 0;
+        Invoke(nameof(QuitGame), 5f);
+    }
+
+    private void QuitGame()
+    {
+        Application.Quit(0);
     }
 }

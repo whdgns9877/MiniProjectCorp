@@ -113,6 +113,11 @@ public class Player : MonoBehaviour
         {
             isGround = false;
         }
+
+        if (other.CompareTag("Respawn"))
+        {
+            GameManager.Instance.ground.ActiveFalse();
+        }
     }
 
     void InvinProcess()
