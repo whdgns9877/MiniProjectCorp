@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     public void SceneChange()
     {
         //GameManager.Instance.AudioManager.PlaySound(AudioType.Button, false);
-        SceneManager.LoadScene("CMJScene");
+        SceneManager.LoadScene("KJHScene");
     }
 
     public void SceneReset()
