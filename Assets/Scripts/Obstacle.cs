@@ -7,7 +7,7 @@ public class Obstacle : MonoBehaviour, IProcess
 {
     //------------------------------------------------------//
     [SerializeField] GameObject debrisPrefab = null;
-    
+
     IProcess process = null;
     void Start()
     {

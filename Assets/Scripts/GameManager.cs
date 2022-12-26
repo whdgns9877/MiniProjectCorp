@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get { return instance; } }
 
-    [SerializeField] private AudioManager audioManager = null;
-    public AudioManager AudioManager { get { return audioManager; } }
+    //[SerializeField] private AudioManager audioManager = null;
+    //public AudioManager AudioManager { get { return audioManager; } }
     public Player player = null;
     public Background ground= null;
 
@@ -59,11 +59,13 @@ public class GameManager : MonoBehaviour
         _START.SetActive(false);
         ground.speed = 0f;
         StartCoroutine(CountDown());
+        Debug.Log("카운트다운 코루틴");
     }
 
     IEnumerator CountDown()
     {
-        GameManager.Instance.AudioManager.PlaySound(AudioType.CountDown, false);
+        Debug.Log("카운트 시작");
+     //   GameManager.Instance.AudioManager.PlaySound(AudioType.CountDown, false);
         _NUM_3.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         _NUM_3.SetActive(false);
@@ -81,7 +83,7 @@ public class GameManager : MonoBehaviour
         ground.speed = 5f;
         Init(player, ground);
         yield return new WaitForSeconds(0.5f);
-        GameManager.Instance.AudioManager.PlaySound(AudioType.GameScene, true);
+     //   GameManager.Instance.AudioManager.PlaySound(AudioType.GameScene, true);
     }
 
     private void Update()

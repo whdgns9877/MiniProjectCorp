@@ -100,25 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debrisPrefab: {fileID: 8093456186636330076, guid: 0852d1dc89759d64e80b62b4808c189f, type: 3}
-  debrises:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  exposiveForce: 80
-  offset: {x: 0, y: -0.5, z: 0}
+  Obstacles: []
 --- !u!135 &3527074655965374590
 SphereCollider:
   m_ObjectHideFlags: 0
